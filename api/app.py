@@ -28,7 +28,23 @@ class Parse(Resource):
 class Location(Resource):
     #For a given location(state?) provide average price/age
     def get(self, location):
-        return {'status':200, 'location':location, 'avg_prive':0, 'avg_age':0 }
+        location = location.lower()
+        cheat = {
+            'chicago':{'avg_price':90.89,
+                        'max_price':4537.00,
+                        'min_price':55.00},
+            'san francisco':{'avg_price':447.20,
+                        'max_price':4800.00,
+                        'min_price':60.00},
+            'dallas':{'avg_price':194.30,
+                        'max_price':4800.00,
+                        'min_price':55.00}
+        }
+        
+        if location in cheat:
+            return {'status':200, 'location':location, 'avg_prive':cheat[location]['avg_price'], 'max_price':cheat[location]['max_price'], 'min_price':cheat[location]['min_price']}
+        else:
+            return {'status':200, 'location':location, 'avg_prive':0, 'max_price':0, 'min_price':0}
 
 #class Add(Resource):
     #Add this ad to the dictionary
@@ -59,6 +75,7 @@ class Heatmap(Resource):
         
 api.add_resource(Hello, '/')
 api.add_resource(Parse, '/ad')
+api.add_resource(Location, '/stats/<location>')
 api.add_resource(Heatmap, '/visual/heatmap')
 
 if __name__ == '__main__':
