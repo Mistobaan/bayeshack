@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="json/bubbles.json"></script>
+    <script src="datamaps.usa.min.js"></script>
+</head>
+<body height="1200">
+    <div id="bubbles" style="position: relative; width: 90%; height: 90%"></div>
+    <script>
+
+    var bubble_map = new Datamap({
+        scope:'usa',
+      element: document.getElementById("bubbles"),
+      geographyConfig: {
+        popupOnHover: false,
+        highlightOnHover: false
+      },
+      fills: {
+        defaultFill: '#ABDDA4',
+        USA: 'blue',
+        RUS: 'red'
+      }
+    });
+    bubble_map.bubbles(bubbles, {
+      popupTemplate: function(geo, data) {
+          return '<div class="hoverinfo">'+date.name+'</div>';
+      }
+    });
+    </script>
+</body>
+</html>

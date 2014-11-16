@@ -1,0 +1,15 @@
+var bubbles = [
+      {
+        "name": "Castle Bravo",
+        "radius": 25,
+        "fillKey": "USA",
+        "latitude": 36.319059,
+        "longitude": -115.551255
+      },{
+        "name": "Tsar Bomba",
+        "radius": 70,
+        "fillKey": "USA",
+        "latitude": 40.78853,
+        "longitude": -73.946246
+      }
+    ];

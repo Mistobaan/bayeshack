@@ -22,7 +22,10 @@ var mapData = []
     
 $.ajax({
   url: "http://127.0.0.1:5000/visual/heatmap",
-  data, {"data":data}
+  type: 'POST',
+  data: JSON.stringify({"data":data}),
+  dataType: "json",
+  contentType: "application/json",
 }).done(function(msg) {
 //create google points
     for(d in msg.data){
