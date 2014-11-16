@@ -48,6 +48,10 @@ def price(x):
         return convert_to_dollars(parts[0])
     return []
 
+def age(x):
+    age = re.findall(r"[-/]*\s?\d{2}$", x)
+    return int(age[0].replace(' ','').replace('-','').replace('/',''))
+
 def convert_to_dollars(x):
     d = text2int(x)
     if d:
