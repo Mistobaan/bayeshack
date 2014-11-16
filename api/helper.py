@@ -124,3 +124,17 @@ def race(x):
         return("indian")
     else:
         return("unidentified/other")
+def raceapply2(x):
+    '''For use in Pandas apply'''
+    if race(x['postTitle'])=='white' or race(x['postText'])=='white':
+        return("white")
+    if race(x['postTitle'])=='black' or race(x['postText'])=='black':
+        return("black")
+    if race(x['postTitle'])=='hispanic' or race(x['postText'])=='hispanic':
+        return("hispanic")
+    if race(x['postTitle'])=='asian' or race(x['postText'])=='asian':
+        return("asian")
+    if race(x['postTitle'])=='indian' or race(x['postText'])=='indian':
+        return("indian")
+    else:
+        return("unidentified/other")
