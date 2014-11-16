@@ -30,3 +30,24 @@ def distribute_loc(lat1, lon1, d, b=30):
 
     lat2, lon2 = destination.latitude, destination.longitude
     return (lat2,lon2)
+    
+def race(x):
+    import re
+    x=x.lower()
+    white=re.compile('(white|caucasian|caucasians|blonde|brunette|red|blond|blondie)')
+    if white.search(x):
+        return("white")
+    black=re.compile('(black|african|ebony|blk|creole|creol|African American|chocolate|chocalate)')
+    if black.search(x):
+        return("black")
+    hispanic=re.compile('(hispanic|latina|mexican|puerto rican|cuban|latin)')
+    if hispanic.search(x):
+        return("hispanic")
+    asian=re.compile('(asian|asain|oriental)')
+    if asian.search(x):
+        return("asian")
+    indian=re.compile('(indian|lakota|cherokee|navajo|sioux)')
+    if indian.search(x):
+        return("indian")
+    else:
+        return("unidentified/other")

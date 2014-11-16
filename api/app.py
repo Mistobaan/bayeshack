@@ -20,7 +20,8 @@ class Parse(Resource):
     def post(self):
         # {'text':"Here's some text"}
         data = json.loads(request.data)
-        return {'status':200, 'message': "Here's what you sent:"+data['text']}, 200, \
+        race = helper.race(data['text'])
+        return {'status':200, 'message': data['text'], 'race':race}, 200, \
     { 'Access-Control-Allow-Origin': '*', \
       'Access-Control-Allow-Methods' : 'POST' }
         
