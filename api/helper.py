@@ -35,14 +35,16 @@ def price(x):
     basic = re.findall(r"\$\d+|\d+\$", x)
     if basic:
         return basic
-    hard = re.findall(r"\d*\sbucks|dollars|roses|dollar", x)
+    hard = re.findall(r"\d+\s*[bucks|dollars|roses|dollar]", x)
     if hard:
-        print hard
         parts = hard[0].split(' ')
         return '$'+str(parts[0])
-    harder = re.findall(r"\w*\sbucks|dollars|roses|dollar", x)
+    harder = re.findall(r"([A-Za-z-]+\s*(bucks|dollars|roses|dollar)\s)", x)
     if harder:
-        parts = harder[0].split(' ')
+        try:
+            parts = harder[0].split(' ')
+        except:
+            parts = harder[0][0].split(' ')
         return convert_to_dollars(parts[0])
     return []
 
